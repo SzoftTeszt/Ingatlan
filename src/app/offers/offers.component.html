@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let oszlopNev of oszlopokText" scope="col">{{oszlopNev}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingatlan of ingatlanok">      
+        <td >{{ingatlan.kategoriaid}}</td>       
+        <td >{{ingatlan.leiras}}</td>       
+        <td >{{ingatlan.hirdetesDatuma}}</td>       
+        <td >{{ingatlan.terhermentes?'Igen':'Nem'}}</td>       
+        <td ><img [src]="ingatlan.kepUrl" alt="Ingatlan kép" class="img-thumbnail"></td>       
+      </tr>    
+    </tbody>
+  </table>

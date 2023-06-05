@@ -1,0 +1,11 @@
+.main{
+    background: url("../../assets/real.PNG") no-repeat top center;
+    background-size: contain;
+    height: 100vh;
+    margin:0 auto;
+}
+.footer{
+    left:0;
+    right: 0;
+    bottom: 20%;
+}
