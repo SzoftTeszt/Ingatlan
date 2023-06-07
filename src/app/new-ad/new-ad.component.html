@@ -1,1 +1,46 @@
-<p>new-ad works!</p>
+{{newAd|json}}
+<div class="card">
+     <div class="card-body">
+      <h5 class="card-title">Új hirdetes elküldése</h5>
+      <div class="form-floating">
+
+            <select *ngIf="kategoriak" [(ngModel)]="newAd.kategoriaid" class="form-select" id="floatingSelect" >
+              <option value="notset" selected>Kérem válasszon</option>
+              <option *ngFor="let kat of kategoriak" [value]="kat.key">
+                {{kat.megnevezes}}
+              </option>
+            
+            </select>
+            <label for="floatingSelect">Ingatlan kategóriája</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input [(ngModel)]="newAd.hirdetesDatuma" type="date" class="form-control" id="dateInput" disabled readonly>
+            <label for="dateInput">Hirdetés dátuma</label>
+          </div>
+
+          <div class="form-floating">
+            <textarea [(ngModel)]="newAd.leiras" class="form-control" placeholder="Ingatlan leírása" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Ingatlan leírása</label>
+          </div>
+
+          <div class="form-check form-switch">
+            <input [(ngModel)]="newAd.tehermentes" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Tehermentes</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [(ngModel)]="newAd.kepUrl" type="text" class="form-control" id="kepInput">
+            <label for="kepInput">Fénykép az ingatlanról</label>
+          </div>
+          <div class="text-center mb-3">
+          <button (click)="ujHirdetes(newAd)" type="button" class="btn btn-primary">Küldés</button>
+          </div>
+
+    </div>
+    <div *ngIf="showError">
+        <div class="alert alert-danger" role="alert">
+           <h3>Hiba - Error</h3>
+           {{errorMessage}}
+        </div>
+    </div>
+  </div>

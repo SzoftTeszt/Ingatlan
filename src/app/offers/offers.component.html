@@ -1,16 +1,27 @@
+<h1 class="text-center display-1 mb-5 pb-2">Ajánlataink</h1>
+
 <table class="table table-striped">
     <thead>
       <tr>
-        <th *ngFor="let oszlopNev of oszlopokText" scope="col">{{oszlopNev}}</th>
+        <th class="text-center" *ngFor="let oszlopNev of oszlopokText" scope="col">{{oszlopNev}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ingatlan of ingatlanok">      
-        <td >{{ingatlan.kategoriaid}}</td>       
+      <tr class="align-middle" *ngFor="let ingatlan of ingatlanok2">      
+        <!-- <td class="text-center">{{getKategoria(ingatlan.kategoriaid).megnevezes}}</td>        -->
+        <td class="text-center">{{ingatlan.kategoriaid}}</td>       
         <td >{{ingatlan.leiras}}</td>       
-        <td >{{ingatlan.hirdetesDatuma}}</td>       
-        <td >{{ingatlan.terhermentes?'Igen':'Nem'}}</td>       
-        <td ><img [src]="ingatlan.kepUrl" alt="Ingatlan kép" class="img-thumbnail"></td>       
+        <td class="text-center">{{ingatlan.hirdetesDatuma}}</td>       
+        <td class="text-center text-success">{{ingatlan.terhermentes?'Igen':'Nem'}}</td>       
+        <td  class="text-center">
+          <ng-container *ngIf="ingatlan.kepUrl; else nincskep" >
+            <img [src]="ingatlan.kepUrl" alt="Ingatlan kép" class="img-thumbnail">      
+          </ng-container>
+          <ng-template #nincskep>
+              Nincs kép!
+          </ng-template>
+        </td> 
+         
       </tr>    
     </tbody>
   </table>
